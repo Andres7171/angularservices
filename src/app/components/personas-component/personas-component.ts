@@ -19,8 +19,7 @@ export class PersonasComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._service.getPersonas().subscribe((response)=>{
-      console.log('leyendo')
+    this._service.getPersonasPromise().then(response=>{
       this.personas=response
       this._cdr.detectChanges()
     })
