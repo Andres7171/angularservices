@@ -18,10 +18,29 @@ export class PersonasComponent implements OnInit {
     this.personas = [];
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+
+    try{
+      this.personas=await this._service.getPersonasAsync()
+      this._cdr.detectChanges()
+    }catch(error){
+      console.error('Error en API: ',error)
+    }
+
+    
+
+    /*
     this._service.getPersonasPromise().then(response=>{
       this.personas=response
       this._cdr.detectChanges()
+    })*/
+
+    /*
+    this._service.getPersonas().subscribe((response)=>{
+      console.log('leyendo')
+      this.personas=response
+      this._cdr.detectChanges()
     })
+    */ 
   }
 }
