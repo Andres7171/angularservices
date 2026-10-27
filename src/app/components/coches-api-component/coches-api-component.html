@@ -1,0 +1,10 @@
+<h1 style="color: green;">Coches Api</h1>
+
+@for (coche of coches; track $index) {
+    <h2 style="color: blue;">
+        {{coche.marca}} - {{coche.modelo}}
+    </h2>
+    <p style="color: red;">{{coche.conductor}}</p>
+    <img style="width: 180px; height: 140px;" src="{{coche.imagen}}" alt="">
+    <hr/>
+}
