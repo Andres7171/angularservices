@@ -10,16 +10,27 @@ import { ServicioPersona } from './services/service.persona';
 import { MenuComponent } from './components/menu-component/menu-component';
 import { ServiceCoche } from './services/service.coche';
 import { CochesApiComponent } from './components/coches-api-component/coches-api-component';
+import { PlantillaFuncionSimpleComponent } from './components/plantilla-funcion-simple-component/plantilla-funcion-simple-component';
+import { FormsModule } from '@angular/forms';
+import { ServicioPlantilla } from './services/service.plantilla';
 
 @NgModule({
-  declarations: [App, ComicsComponent, PersonasComponent, MenuComponent, CochesApiComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  declarations: [
+    App,
+    ComicsComponent,
+    PersonasComponent,
+    MenuComponent,
+    CochesApiComponent,
+    PlantillaFuncionSimpleComponent,
+  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideHttpClient(),
     ServicioPersona,
     ServiceComics,
     ServiceCoche,
+    ServicioPlantilla,
   ],
   bootstrap: [App],
 })
