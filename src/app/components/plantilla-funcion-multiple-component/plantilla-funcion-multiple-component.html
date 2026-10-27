@@ -1,0 +1,31 @@
+<h1>Plantilla funciones simple</h1>
+<form class=" mx-3 my-3" #funcionForm="ngForm" (ngSubmit)="mostrarTabla()">
+  <label class="form-label" for="">Selecciona funcion:</label>
+  <select multiple size="5" class="form-select mb-2" #selectfunciones name="selectfunciones">
+    @for (funcion of funciones; track $index) {
+      <option value="{{ funcion }}">{{ funcion }}</option>
+    }
+  </select>
+  <button class=" btn btn-info">Enviar</button>
+</form>
+
+@if (tabla == true) {
+  <div class="mx-3 my-3">
+    <table class="table table-hover  table-primary table-striped">
+      <thead class="table-info">
+        <th class="table-info">Apellido</th>
+        <th class="table-info">Funcion</th>
+        <th class="table-info">Turno</th>
+      </thead>
+      <tbody>
+        @for (empleado of plantilla; track $index) {
+          <tr class="table-info">
+            <td class="table-info">{{ empleado.apellido }}</td>
+            <td class="table-info">{{ empleado.funcion }}</td>
+            <td class="table-info">{{ empleado.turno }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}
