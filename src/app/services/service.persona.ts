@@ -14,16 +14,26 @@ export class ServicioPersona {
 
   getPersonasPromise(): Promise<any> {
     let urlApi = 'https://servicioapipersonasmvcpgs.azurewebsites.net/api/personas';
-    let promise=new Promise((resolve)=>{
-        this._http.get(urlApi).subscribe(response=>{
-            resolve(response)
-        })
-    })
-    return promise
+    let promise = new Promise((resolve) => {
+      this._http.get(urlApi).subscribe((response) => {
+        resolve(response);
+      });
+    });
+    return promise;
   }
 
-  async getPersonasAsync():Promise<Persona[]>{ //Aqui se puede poner anny tambien
+  async getPersonasAsync(): Promise<Persona[]> {
+    //Aqui se puede poner anny tambien
     let urlApi = 'https://servicioapipersonasmvcpgs.azurewebsites.net/api/personas';
-    return firstValueFrom(this._http.get<Persona[]>(urlApi))
+    return firstValueFrom(this._http.get<Persona[]>(urlApi));
   }
+
+  //LA MEJOR:
+  /*
+  getPersonas(): Observable<Persona[]> {   // con tipo, mejor que any
+    let urlApi = 'https://servicioapipersonasmvcpgs.azurewebsites.net/api/personas';
+    return this._http.get<Persona[]>(this.urlApi);
+}
+
+  */
 }

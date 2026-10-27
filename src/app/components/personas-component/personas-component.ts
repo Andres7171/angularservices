@@ -13,27 +13,36 @@ export class PersonasComponent implements OnInit {
 
   constructor(
     private _service: ServicioPersona,
-    private _cdr:ChangeDetectorRef
+    private _cdr: ChangeDetectorRef,
   ) {
     this.personas = [];
   }
 
   async ngOnInit(): Promise<void> {
-
+    
+    this._service.getPersonas().subscribe({
+      next:(response)=>{
+        this.personas=response
+        this._cdr.detectChanges()
+      },error:(error)=>{
+        console.error('Error en API: ',error)
+      }
+    })
+    /*
     try{
       this.personas=await this._service.getPersonasAsync()
       this._cdr.detectChanges()
     }catch(error){
       console.error('Error en API: ',error)
     }
-
-    
+    */
 
     /*
     this._service.getPersonasPromise().then(response=>{
       this.personas=response
       this._cdr.detectChanges()
-    })*/
+    })
+    */
 
     /*
     this._service.getPersonas().subscribe((response)=>{
@@ -41,6 +50,6 @@ export class PersonasComponent implements OnInit {
       this.personas=response
       this._cdr.detectChanges()
     })
-    */ 
+    */
   }
 }
